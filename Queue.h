@@ -5,15 +5,16 @@ class Queue
 {
 	int QueueLength;
 	int MaxQueueLength;
-	string* queue;
+	int* queue;
 public:
 	Queue(int length);
 	void Clear();
 	bool IsEmpty();
 	bool IsFull();
 	int GetLength();
-	void Add(string s);
+	void Add(int s);
 	void Print();
-	string Extract();
+	int Extract();
+	int operator[](int indx);
 };
 

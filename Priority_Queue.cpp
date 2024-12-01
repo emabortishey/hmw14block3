@@ -26,7 +26,7 @@ void Priority_Queue::Add(string s, int p)
 	if (!IsFull())
 	{
 		queue[QueueLength] = s;
-		prior[++QueueLength] = p;
+		prior[QueueLength++] = p;
 	}
 }
 
@@ -40,9 +40,28 @@ void Priority_Queue::Print()
 
 string Priority_Queue::Extract()
 {
+	int prior_index = 0;
+	string buff;
 	if (!IsEmpty())
 	{
-		return queue[QueueLength--];
+		for (int i = 1; i < QueueLength; i++)
+		{
+			if (prior[prior_index] < prior[i])
+			{
+				prior_index = i;
+				buff = queue[prior_index];
+			}
+		}
+
+		QueueLength--;
+
+		for (int i = prior_index; i < QueueLength; i++)
+		{
+			queue[i] = queue[i + 1];
+			prior[i] = prior[i + 1];
+		}
+
+		return buff;
 	}
 	else
 	{

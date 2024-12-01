@@ -1,6 +1,6 @@
 #include "Queue.h"
 
-Queue::Queue(int length) : QueueLength{ 0 }, MaxQueueLength{ length }, queue{ new string[length] } {}
+Queue::Queue(int length) : QueueLength{ 0 }, MaxQueueLength{ length }, queue{ new int[length] } {}
 
 void Queue::Clear()
 {
@@ -22,11 +22,11 @@ int Queue::GetLength()
 	return QueueLength;
 }
 
-void Queue::Add(string s)
+void Queue::Add(int s)
 {
 	if (!IsFull())
 	{
-		queue[++QueueLength] = s;
+		queue[QueueLength++] = s;
 	}
 }
 
@@ -38,14 +38,19 @@ void Queue::Print()
 	}
 }
 
-string Queue::Extract()
+int Queue::Extract()
 {
 	if (!IsEmpty())
 	{
-		return queue[QueueLength--];
+		return queue[--QueueLength];
 	}
 	else
 	{
 		return 0;
 	}
+}
+
+int Queue::operator[](int indx)
+{
+	return queue[indx];
 }
