@@ -30,6 +30,7 @@ void Queue::Add(int s)
 	}
 }
 
+// вывод всеё очереди сразу
 void Queue::Print()
 {
 	for (int i = 0; i < QueueLength; i++)
@@ -50,6 +51,10 @@ int Queue::Extract()
 	}
 }
 
+// тут мы вытаскиваем из очереди определенный
+// элемент, а после сдвигаем её (надеюсь законно
+// делать такие методы в обычной очереди, это было
+// необходимо для приложения)
 int Queue::ExtractWPrior(int prior)
 {
 	if (!IsEmpty())
@@ -67,6 +72,8 @@ int Queue::ExtractWPrior(int prior)
 	}
 }
 
+// перегрузка оператора квадратный скобок для получения элемента по индексу
+// без экстракта для вывода в приложении
 int Queue::operator[](int indx)
 {
 	return queue[indx];

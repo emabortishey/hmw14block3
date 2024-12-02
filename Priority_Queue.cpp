@@ -30,6 +30,8 @@ void Priority_Queue::Add(string s, int p)
 	}
 }
 
+// вывод всей очереди сразу, я решила не париться над
+// выводом в соответствии с приоритетами, мне лень
 void Priority_Queue::Print()
 {
 	for (int i = 0; i < QueueLength; i++)
@@ -38,12 +40,14 @@ void Priority_Queue::Print()
 	}
 }
 
+// думаю тут подробное обьяснение не требуется
 string Priority_Queue::Extract()
 {
 	int prior_index = 0;
 	string buff;
 	if (!IsEmpty())
 	{
+		// ищем нужный индекс и строку
 		for (int i = 1; i < QueueLength; i++)
 		{
 			if (prior[prior_index] < prior[i])
@@ -53,8 +57,9 @@ string Priority_Queue::Extract()
 			}
 		}
 
+		// умеьшаем текущую длину
 		QueueLength--;
-
+		// сдвигаем очередь
 		for (int i = prior_index; i < QueueLength; i++)
 		{
 			queue[i] = queue[i + 1];
@@ -71,6 +76,8 @@ string Priority_Queue::Extract()
 
 int Priority_Queue::max_prior_indx()
 {
+	// то же самое что и в эекстракт, но тут возвращается индекс макс.
+	// приоритета, и не происходит смещения
 	int max_prior_index = 0;
 	for (int i = 1; i < QueueLength; i++)
 	{
@@ -82,14 +89,22 @@ int Priority_Queue::max_prior_indx()
 	return max_prior_index;
 }
 
+// перегрузка квадратных скобок именно в этом задании
+// для меня должна была выводить приоритет + имя клиента
+// поэтому я заглянула в интернет и нашла библиотеку
+// сстринг, как я поняла она с помощью перегрузок
+// операторов стрелочек может как приниматьт
+// значения так и передавать в другие переменные и я решила 
+// использовать её для того, чтобы корректно записать числа
+// в переменную стринг, без преобразований в смайлики и
+// прочего бреда
 string Priority_Queue::operator[](int indx)
 {
-	char buff[2]{ prior[indx] };
 	string buff_str;
 	stringstream buff_sstr;
 	buff_sstr << prior[indx];
 	buff_sstr >> buff_str;
-	buff_str.append(" ");
+	buff_str.append(" | ");
 	buff_str.append(queue[indx]);
 	return buff_str;
 }

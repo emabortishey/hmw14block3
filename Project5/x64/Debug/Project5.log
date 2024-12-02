@@ -1,6 +1,2 @@
-﻿  Priority_Queue.cpp
-C:\Users\fartb\source\repos\Project5\Priority_Queue.cpp(87,26): warning C4838: Преобразование из "int" в "char" требует сужающего преобразования.
-  Queue.cpp
-  Source.cpp
-  Создание кода...
+﻿  Source.cpp
   Project5.vcxproj -> C:\Users\fartb\source\repos\Project5\x64\Debug\Project5.exe
