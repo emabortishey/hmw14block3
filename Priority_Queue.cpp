@@ -68,3 +68,28 @@ string Priority_Queue::Extract()
 		return 0;
 	}
 }
+
+int Priority_Queue::max_prior_indx()
+{
+	int max_prior_index = 0;
+	for (int i = 1; i < QueueLength; i++)
+	{
+		if (prior[max_prior_index] < prior[i])
+		{
+			max_prior_index = i;
+		}
+	}
+	return max_prior_index;
+}
+
+string Priority_Queue::operator[](int indx)
+{
+	char buff[2]{ prior[indx] };
+	string buff_str;
+	stringstream buff_sstr;
+	buff_sstr << prior[indx];
+	buff_sstr >> buff_str;
+	buff_str.append(" ");
+	buff_str.append(queue[indx]);
+	return buff_str;
+}

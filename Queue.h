@@ -15,6 +15,7 @@ public:
 	void Add(int s);
 	void Print();
 	int Extract();
+	int ExtractWPrior(int prior);
 	int operator[](int indx);
 };
 

@@ -16,5 +16,7 @@ public:
 	void Add(string s, int p);
 	void Print();
 	string Extract();
+	int max_prior_indx();
+	string operator[](int indx);
 };
 

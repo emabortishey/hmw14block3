@@ -50,6 +50,23 @@ int Queue::Extract()
 	}
 }
 
+int Queue::ExtractWPrior(int prior)
+{
+	if (!IsEmpty())
+	{
+		return queue[prior];
+
+		for (int i = prior; i < QueueLength; i++)
+		{
+			queue[i] = queue[i + 1];
+		}
+	}
+	else
+	{
+		return 0;
+	}
+}
+
 int Queue::operator[](int indx)
 {
 	return queue[indx];
